@@ -78,7 +78,7 @@ test('TerraformViewModel filters by kind, error status and search text', () => {
   assert.equal(vm.setFilter({ text: '', status: 'resource' }), 2);
   assert.equal(vm.setFilter({ text: '', status: 'module' }), 1);
   assert.ok(vm.setFilter({ text: '', status: 'error' }) >= 2);
-  assert.equal(vm.setFilter({ text: 'aws_db_instance', status: '' }), 1);
+  assert.equal(vm.setFilter({ text: 'aws_db_instance', status: 'resource' }), 1);
   const det = vm.detail(1);
   assert.ok(det && det.kind === 'terraform');
 });

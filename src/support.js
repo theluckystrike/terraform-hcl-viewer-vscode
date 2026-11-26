@@ -24,7 +24,7 @@ const FUNDING_LABELS = {
 };
 
 // This extension's Marketplace id. The footer's "Rate" link opens its review page; nothing asks for a rating.
-const SELF_ID = "zovo.zovo-github-actions-viewer";
+const SELF_ID = "zovo.zovo-terraform-hcl-viewer";
 
 // [id, name, one line]. Live ones are on the Marketplace. Queued ones are not there yet: they open GitHub.
 const LIVE = [
@@ -714,8 +714,8 @@ const PUBLISHER_URL = 'https://marketplace.visualstudio.com/publishers/zovo';
 // getPro and payWithPayPal are the license module's commands. The footer runs them instead of opening the general
 // Sponsors page; payWithPayPal is '' when this extension has no PayPal command, and the plain PayPal link stays.
 const PRO = {
-  "getPro": "zovoGha.getPro",
-  "payWithPayPal": "zovoGha.payWithPayPal",
+  "getPro": "zovoTfHcl.getPro",
+  "payWithPayPal": "zovoTfHcl.payWithPayPal",
   "tier": "https://github.com/sponsors/theluckystrike/sponsorships?tier_id=679878",
   "usd": 19
 };
