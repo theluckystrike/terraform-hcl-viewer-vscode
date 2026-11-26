@@ -1,0 +1,317 @@
+{
+  "name": "zovo-terraform-hcl-viewer",
+  "displayName": "Terraform HCL & Module Viewer",
+  "description": "Inspect Terraform .tf, .tfvars and .terraform.lock.hcl files in VS Code: resource tree, module versions, dependency graph and security checks, offline.",
+  "version": "0.1.0",
+  "publisher": "zovo",
+  "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1E1B4B",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theluckystrike/terraform-hcl-viewer-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/theluckystrike/terraform-hcl-viewer-vscode/issues"
+  },
+  "homepage": "https://github.com/theluckystrike/terraform-hcl-viewer-vscode#readme",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "keywords": [
+    "terraform",
+    "hcl",
+    "tfvars",
+    "iac",
+    "infrastructure",
+    "devops",
+    "security",
+    "aws"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onUri",
+    "onCustomEditor:zovo-tfhcl.viewer"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": true
+  },
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "zovo-tfhcl.viewer",
+        "displayName": "Terraform HCL & Module Viewer",
+        "selector": [
+          {
+            "filenamePattern": "*.tf"
+          },
+          {
+            "filenamePattern": "*.tfvars"
+          },
+          {
+            "filenamePattern": ".terraform.lock.hcl"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "commands": [
+      {
+        "command": "zovoTfHcl.openWith",
+        "title": "Open in Terraform HCL & Module Viewer",
+        "category": "Terraform HCL & Module Viewer",
+        "icon": "$(layers)"
+      },
+      {
+        "command": "zovoTfHcl.openSample",
+        "title": "Open the Sample Terraform File",
+        "category": "Terraform HCL & Module Viewer"
+      },
+      {
+        "command": "zovoTfHcl.openWalkthrough",
+        "title": "Get Started",
+        "category": "Terraform HCL & Module Viewer"
+      },
+      {
+        "command": "zovoTfHcl.moreViewers",
+        "title": "More free tools by Zovo",
+        "category": "Terraform HCL & Module Viewer"
+      },
+      {
+        "command": "zovoTfHcl.supportDeveloper",
+        "title": "Support the developer",
+        "category": "Terraform HCL & Module Viewer"
+      },
+      {
+        "command": "zovoTfHcl.auditSecurity",
+        "title": "Audit Terraform HCL security and module pinning (Pro, 1 free try)",
+        "category": "Terraform HCL & Module Viewer"
+      },
+      {
+        "command": "zovoTfHcl.diffVars",
+        "title": "Compare two Terraform HCL or tfvars files (Pro, 1 free try)",
+        "category": "Terraform HCL & Module Viewer"
+      },
+      {
+        "command": "zovoTfHcl.exportInventory",
+        "title": "Export Mermaid dependency graph and resource inventory (Pro, 1 free try)",
+        "category": "Terraform HCL & Module Viewer"
+      },
+      {
+        "command": "zovoTfHcl.zovoPro.auditSecurity",
+        "title": "Zovo Pro: Audit Terraform HCL security and module pinning"
+      },
+      {
+        "command": "zovoTfHcl.zovoPro.diffVars",
+        "title": "Zovo Pro: Compare two Terraform HCL or tfvars files"
+      },
+      {
+        "command": "zovoTfHcl.zovoPro.exportInventory",
+        "title": "Zovo Pro: Export Mermaid dependency graph and resource inventory"
+      },
+      {
+        "command": "zovoTfHcl.zovoTitle.auditSecurity",
+        "title": "Zovo Pro: Audit Terraform HCL security and module pinning"
+      },
+      {
+        "command": "zovoTfHcl.zovoTitle.diffVars",
+        "title": "Zovo Pro: Compare two Terraform HCL or tfvars files"
+      },
+      {
+        "command": "zovoTfHcl.zovoTitle.exportInventory",
+        "title": "Zovo Pro: Export Mermaid dependency graph and resource inventory"
+      },
+      {
+        "command": "zovoTfHcl.getPro",
+        "title": "Get Zovo Pro (USD 19 once, all Zovo extensions)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoTfHcl.payWithPayPal",
+        "title": "Pay for Zovo Pro with PayPal (USD 19, team of 5 USD 59)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoTfHcl.unlockWithSponsors",
+        "title": "I already paid: unlock with GitHub Sponsors",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoTfHcl.enterLicenseKey",
+        "title": "Enter Zovo Pro license key",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoTfHcl.removeLicense",
+        "title": "Remove Zovo Pro from this editor",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoTfHcl.payByCard",
+        "title": "Pay for Zovo Pro by card (USD 19)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoTfHcl.enterKey",
+        "title": "Enter a key",
+        "category": "Zovo Pro"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "zovoTfHcl.zovoTitle.auditSecurity",
+          "when": "activeCustomEditorId == 'zovo-tfhcl.viewer' && config.zovoTfHcl.showProTools",
+          "group": "zovoPro@1"
+        },
+        {
+          "command": "zovoTfHcl.zovoTitle.diffVars",
+          "when": "activeCustomEditorId == 'zovo-tfhcl.viewer' && config.zovoTfHcl.showProTools",
+          "group": "zovoPro@2"
+        },
+        {
+          "command": "zovoTfHcl.zovoTitle.exportInventory",
+          "when": "activeCustomEditorId == 'zovo-tfhcl.viewer' && config.zovoTfHcl.showProTools",
+          "group": "zovoPro@3"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "zovoTfHcl.openWith",
+          "when": "resourceFilename =~ /(\\.(tf|tfvars)$|^\\.terraform\\.lock\\.hcl$)/i && !explorerResourceIsFolder",
+          "group": "navigation@9"
+        },
+        {
+          "command": "zovoTfHcl.zovoPro.auditSecurity",
+          "when": "resourceFilename =~ /(\\.(tf|tfvars)$|^\\.terraform\\.lock\\.hcl$)/i && !explorerResourceIsFolder && config.zovoTfHcl.showProTools",
+          "group": "zovoPro@1"
+        },
+        {
+          "command": "zovoTfHcl.zovoPro.diffVars",
+          "when": "resourceFilename =~ /(\\.(tf|tfvars)$|^\\.terraform\\.lock\\.hcl$)/i && !explorerResourceIsFolder && config.zovoTfHcl.showProTools",
+          "group": "zovoPro@2"
+        },
+        {
+          "command": "zovoTfHcl.zovoPro.exportInventory",
+          "when": "resourceFilename =~ /(\\.(tf|tfvars)$|^\\.terraform\\.lock\\.hcl$)/i && !explorerResourceIsFolder && config.zovoTfHcl.showProTools",
+          "group": "zovoPro@3"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "zovoTfHcl.auditSecurity",
+          "when": "config.zovoTfHcl.showProTools"
+        },
+        {
+          "command": "zovoTfHcl.diffVars",
+          "when": "config.zovoTfHcl.showProTools"
+        },
+        {
+          "command": "zovoTfHcl.exportInventory",
+          "when": "config.zovoTfHcl.showProTools"
+        },
+        {
+          "command": "zovoTfHcl.zovoPro.auditSecurity",
+          "when": "false"
+        },
+        {
+          "command": "zovoTfHcl.zovoPro.diffVars",
+          "when": "false"
+        },
+        {
+          "command": "zovoTfHcl.zovoPro.exportInventory",
+          "when": "false"
+        },
+        {
+          "command": "zovoTfHcl.zovoTitle.auditSecurity",
+          "when": "false"
+        },
+        {
+          "command": "zovoTfHcl.zovoTitle.diffVars",
+          "when": "false"
+        },
+        {
+          "command": "zovoTfHcl.zovoTitle.exportInventory",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Terraform HCL & Module Viewer",
+      "properties": {
+        "zovoTfHcl.maxFileMB": {
+          "type": "number",
+          "default": 8,
+          "minimum": 1,
+          "maximum": 64,
+          "description": "Files up to this size open in Terraform HCL & Module Viewer."
+        },
+        "zovoTfHcl.pageSize": {
+          "type": "number",
+          "default": 100,
+          "minimum": 20,
+          "maximum": 500,
+          "description": "Terraform blocks shown on one page of the resource tree."
+        },
+        "zovoTfHcl.showProTools": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the Zovo Pro tools (security audit, tfvars diff and resource inventory export) in the Command Palette, the Explorer menu, the editor title menu and the viewer toolbar. Everything free stays visible."
+        },
+        "zovoTfHcl.askForRating": {
+          "type": "boolean",
+          "default": true,
+          "description": "Ask once for a store rating after 3 Terraform files open without an error across 2 days. Choosing No thanks never asks again. Nothing is sent anywhere."
+        },
+        "zovoTfHcl.showSupportLinks": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the small Rate, More free tools and Zovo Pro links at the bottom of the viewer. Nothing is sent anywhere."
+        },
+        "zovo.tfhclview.trial.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the 7-day Zovo Pro trial button in the Pro panel."
+        }
+      }
+    },
+    "walkthroughs": [
+      {
+        "id": "zovoTfHcl.start",
+        "title": "Get started with Terraform HCL & Module Viewer",
+        "description": "Inspect *.tf, *.tfvars and .terraform.lock.hcl files in VS Code: resource tree, provider and module versions, dependency graph and security findings, offline.",
+        "steps": [
+          {
+            "id": "open",
+            "title": "Open a Terraform HCL file",
+            "description": "Click any .tf, .tfvars or .terraform.lock.hcl file in the Explorer, or run Open in Terraform HCL & Module Viewer.\n[Open the sample Terraform file](command:zovoTfHcl.openSample)",
+            "media": {
+              "image": "images/screenshot.png",
+              "altText": "A Terraform HCL file open in the viewer showing resources, modules, provider versions, dependency graph and security findings."
+            },
+            "completionEvents": [
+              "onCommand:zovoTfHcl.openSample"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "test": "node scripts/test.js",
+    "package": "npx -y @vscode/vsce@3 package --no-dependencies"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/theluckystrike/sponsorships?tier_id=679878"
+  }
+}
